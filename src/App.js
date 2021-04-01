@@ -1,6 +1,9 @@
 import './App.css';
-import Header from './components/header'
-import GameBoard from './components/gameboard'
+import Header from './components/header';
+import Game from './components/game';
+import GameLobby from './components/gameLobby';
+
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
   return (
@@ -9,7 +12,12 @@ function App() {
         <Header/>
       </header>
       <div className='App-content'>
-        <GameBoard/>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Game}/>
+            <Route path="/:lobbyName" exact component={GameLobby}/>
+          </Switch>            
+        </Router>
       </div>
     </div>
   );
